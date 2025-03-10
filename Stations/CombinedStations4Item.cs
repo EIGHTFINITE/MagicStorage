@@ -33,10 +33,6 @@ namespace MagicStorage.Stations
 				.AddIngredient(ItemID.Autohammer)
 				.AddIngredient(ItemID.LunarCraftingStation);
 
-			if (ModLoader.TryGetMod("Fargowiltas", out Mod Fargowiltas)) {
-				recipe.AddIngredient(Fargowiltas.Find<ModItem>("GoldenDippingVat").Type);
-			}
-
 			recipe.AddIngredient(ItemID.LavaBucket, 10)
 				.AddIngredient(ItemID.HoneyBucket, 10)
 				.Register();

@@ -222,7 +222,7 @@ namespace MagicStorage.NPCs {
 				string key = "Mods.MagicStorage.Dialogue.Golem.Help";
 
 				return key + id + id switch {
-					CombinedStations2 => ModLoader.HasMod("Fargowiltas") ? "_WithFargo" : "_NoFargo",
+					CombinedStations2 => "_NoFargo",
 					PortableAccesses => NPC.downedMoonlord ? "_Moon" : Utility.DownedAllMechs ? "_Mechs" : "",
 					_ => ""
 				};

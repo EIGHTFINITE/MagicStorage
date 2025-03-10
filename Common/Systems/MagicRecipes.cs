@@ -156,13 +156,6 @@ namespace MagicStorage.Common.Systems {
 
 			items = new[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() };
 
-			//Support the Demon/Crimson Altar items from Fargo's Mutants Mod
-			if (ModLoader.TryGetMod("Fargowiltas", out Mod Fargowiltas)) {
-				Array.Resize(ref items, items.Length + 2);
-				items[^2] = Fargowiltas.Find<ModItem>("DemonAltar").Type;
-				items[^1] = Fargowiltas.Find<ModItem>("CrimsonAltar").Type;
-			}
-
 			//Support the Corrupt/Crimson Altar items from LuiAFK Reborn
 			if (ModLoader.TryGetMod("miningcracks_take_on_luiafk", out Mod LuiAFK)) {
 				Array.Resize(ref items, items.Length + 2);
