@@ -77,9 +77,6 @@ namespace MagicStorage {
 		[DefaultValue(true)]
 		public bool canMovePanels;
 
-		[DefaultValue(true)]
-		public bool automatonRemembers;
-
 		public static MagicStorageConfig Instance => ModContent.GetInstance<MagicStorageConfig>();
 
 		[JsonIgnore]
@@ -139,9 +136,6 @@ namespace MagicStorage {
 		[JsonIgnore]
 		public static bool IsRecursionInfinite => RecipeRecursionDepth == -1;
 
-		[JsonIgnore]
-		public static bool DisplayLastSeenAutomatonTip => Instance.automatonRemembers;
-
 		public override ConfigScope Mode => ConfigScope.ClientSide;
 
 		// TODO: remove custom json converter when tml fix ItemDefinition format error
@@ -161,14 +155,8 @@ namespace MagicStorage {
 
 		public static MagicStorageServerConfig Instance => ModContent.GetInstance<MagicStorageServerConfig>();
 
-		[DefaultValue(true)]
-		public bool allowAutomatonToMoveIn;
-
 		[DefaultValue(false)]
 		public bool auditLog;
-
-		[JsonIgnore]
-		public static bool AllowAutomatonToMoveIn => Instance.allowAutomatonToMoveIn;
 
 		[JsonIgnore]
 		public static bool ReportClientStorageUsage => Instance.auditLog;

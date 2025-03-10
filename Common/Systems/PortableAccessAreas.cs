@@ -89,28 +89,6 @@ namespace MagicStorage.Common.Systems {
 			DebugArea = Mod.Assets.Request<Texture2D>("Assets/DebugPixels");
 		}
 
-		public override void PostDrawTiles() {
-			if (!MagicStorageMod.UsingPrivateBeta || Main.gameMenu)
-				return;
-
-			#if NETPLAY
-			if (!MagicStorageBetaConfig.ShowDebugPylonRangeAreas)
-				return;
-			#endif
-
-			if (!CanDrawAreas(Main.LocalPlayer, out Point16 accessLocation, out float playerToPylonRange))
-				return;
-
-			SpriteBatch spriteBatch = Main.spriteBatch;
-
-			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
-
-			DrawAreas(Main.LocalPlayer, spriteBatch, accessLocation, playerToPylonRange, drawNear: false);
-			DrawAreas(Main.LocalPlayer, spriteBatch, accessLocation, playerToPylonRange, drawNear: true);
-
-			spriteBatch.End();
-		}
-
 		internal static bool CanDrawAreas(Player player, out Point16 accessLocation, out float playerToPylonRange) {
 			if (player.HeldItem.ModItem is not PortableAccess portableAccess || portableAccess.Location.X < 0 || !portableAccess.GetEffectiveRange(out playerToPylonRange, out _) || playerToPylonRange < 0) {
 				accessLocation = Point16.NegativeOne;

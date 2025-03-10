@@ -1,5 +1,4 @@
 ﻿using MagicStorage.Components;
-using MagicStorage.NPCs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -230,33 +229,6 @@ namespace MagicStorage.Common.Systems
 
 			for (int i = 0; i < moddedCount; i++)
 				moddedDiamonds.Add(reader.ReadInt32());
-		}
-
-		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) {
-			if (!MagicStorageServerConfig.AllowAutomatonToMoveIn)
-				return;
-
-			int index = tasks.FindIndex(static pass => pass.Name == "Guide");
-			if (index < 0)
-				index = tasks.Count - 1;  // Failsafe for when the task was removed
-
-			tasks.Insert(index + 1, new AutomatonGenPass("MagicStorage: Automaton Pass", 0.016f));
-		}
-	}
-
-	internal class AutomatonGenPass : GenPass {
-		public AutomatonGenPass(string name, float loadWeight) : base(name, loadWeight) { }
-
-		protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration) {
-			progress.Message = "Spawning the Automaton";
-
-			NPC golem = NPC.NewNPCDirect(new EntitySource_WorldGen(), Main.spawnTileX * 16, Main.spawnTileY * 16, ModContent.NPCType<Golem>());
-			golem.homeTileX = Main.spawnTileX;
-			golem.homeTileY = Main.spawnTileY;
-			golem.direction = 1;
-			golem.homeless = true;
-
-			progress.Set(1.0f);
 		}
 	}
 }

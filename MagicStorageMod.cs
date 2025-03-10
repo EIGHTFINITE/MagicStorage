@@ -16,8 +16,6 @@ namespace MagicStorage {
 	public class MagicStorageMod : Mod {
 		public static MagicStorageMod Instance => ModContent.GetInstance<MagicStorageMod>();
 
-		internal static bool UsingPrivateBeta { get; private set; }  //Make sure to add the "NETPLAY" define when setting this to true for beta builds! -- absoluteAquarian
-
 		// Integration with ModHelpers
 		public static string GithubUserName => "blushiemagic";
 		public static string GithubProjectName => "MagicStorage";
@@ -35,8 +33,6 @@ namespace MagicStorage {
 
 		public override void Load()
 		{
-			UsingPrivateBeta = DisplayName.Contains("BETA");
-
 			LocalizationHelper.ForceLoadModHJsonLocalization(this);
 
 			InterfaceHelper.Initialize();

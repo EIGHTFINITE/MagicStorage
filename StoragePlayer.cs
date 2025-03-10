@@ -30,12 +30,6 @@ namespace MagicStorage
 		internal int wirelessLatency = -1;
 		internal const int MaxLatency = 10;
 
-		private int? patreon;
-
-		// Automaton help tips
-		internal bool unlockedTip_Mechs, unlockedTip_MoonLord;
-		internal int automatonHelpTip;
-
 		internal const int SAVE_VERSION = 1;
 
 		protected override bool CloneNewInstances => false;
@@ -54,14 +48,8 @@ namespace MagicStorage
 			FavoritedRecipes.Save(tag);
 			HiddenShimmerItems.Save(tag);
 			FavoritedShimmerItems.Save(tag);
-			tag["automaton"] = automatonHelpTip;
-
-			BitsByte unlocked = new(unlockedTip_Mechs, unlockedTip_MoonLord);
-			tag["unlocked"] = (byte)unlocked;
 
 			tag["version"] = SAVE_VERSION;
-
-			tag["shilling"] = patreon;
 		}
 
 		public override void LoadData(TagCompound tag)
@@ -70,31 +58,6 @@ namespace MagicStorage
 			FavoritedRecipes.Load(tag);
 			HiddenShimmerItems.Load(tag);
 			FavoritedShimmerItems.Load(tag);
-
-			automatonHelpTip = tag.GetInt("version") == SAVE_VERSION ? tag.GetInt("automaton") : 0;
-			BitsByte unlocked = tag.GetByte("unlocked");
-			unlocked.Retrieve(ref unlockedTip_Mechs, ref unlockedTip_MoonLord);
-
-			if (tag.TryGet("shilling", out int waitCount))
-				patreon = waitCount >= 0 ? waitCount - 1 : waitCount;
-			else
-				patreon = Main.rand.Next(3, 8);
-		}
-
-		public override void OnEnterWorld() {
-			if (MagicStorageMod.UsingPrivateBeta) {
-				Main.NewTextMultiline("Thank you for helping test a private beta for Magic Storage!\n" +
-					"Do note that using this private beta build will cause a ton of text to be printed to the chat (when the config is enabled) and to your log files.",
-					c: Color.LightBlue);
-			}
-
-			if (patreon == 0) {
-				Main.NewTextMultiline("Thank you for playing Magic Storage!\n" +
-					"Please consider supporting the development of Magic Storage by becoming a patron for the absoluteAquarian Patreon.\n" +
-					"Patrons will gain early access to future updates of Magic Storage, plus other benefits.\n" +
-					"[c/dddd00:NOTE:] This message will only be displayed once per player.",
-					c: Color.LightBlue);
-			}
 		}
 
 		public override void PlayerDisconnect() {

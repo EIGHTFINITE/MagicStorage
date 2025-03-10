@@ -109,7 +109,7 @@ namespace MagicStorage
 		}
 
 		public static void PrintClientRequest(int sender, string requestName, Vector2 worldCoordinates) {
-			if (!MagicStorageMod.UsingPrivateBeta && MagicStorageServerConfig.ReportClientStorageUsage) {
+			if (MagicStorageServerConfig.ReportClientStorageUsage) {
 				Utility.ConvertToGPSCoordinates(worldCoordinates, out string compassText, out string depthText);
 				PrintToServerLogAndConsole(true, $"Client \"{Netplay.Clients[sender].Name}\" requested action \"{requestName}\" at location: {compassText} | {depthText}");
 			}
@@ -195,9 +195,6 @@ namespace MagicStorage
 					break;
 				case MessageType.ServerQuickStackToStorageResult:
 					ClientReceiveQuickStackToNearbyStorageResult(reader);
-					break;
-				case MessageType.GolemHelpTextUpdate:
-					ClientReceiveGolemTextUpdate();
 					break;
 				case MessageType.ClientRequestServerOp:
 					ServerReceiveOperatorRequest(sender);
@@ -1171,22 +1168,6 @@ namespace MagicStorage
 				MagicUI.SetNextCollectionsToRefresh(origType);
 		}
 
-		public static void SendGolemTextUpdate() {
-			if (Main.netMode != NetmodeID.Server)
-				return;
-
-			ModPacket packet = MagicStorageMod.Instance.GetPacket();
-			packet.Write((byte)MessageType.GolemHelpTextUpdate);
-			packet.Send();
-		}
-
-		public static void ClientReceiveGolemTextUpdate() {
-			if (Main.netMode != NetmodeID.MultiplayerClient)
-				return;
-
-			GolemTextTracking.SetPendingText();
-		}
-
 		public static void ClientRequestServerOperator() {
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 				return;
@@ -1753,7 +1734,6 @@ namespace MagicStorage
 		MassDuplicateSellResult,
 		RequestStorageUnitStyle,
 		ServerQuickStackToStorageResult,
-		GolemHelpTextUpdate,
 		ClientRequestServerOp,
 		ServerOpResponse,
 		ClientRequestServerOpConfirmation,
