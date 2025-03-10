@@ -14,7 +14,6 @@ using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
 using Terraria.UI;
-using static MagicStorage.UI.States.StorageUIState;
 
 namespace MagicStorage.UI.States {
 	public abstract class BaseStorageUIAccessPage : BaseStorageUIPage {

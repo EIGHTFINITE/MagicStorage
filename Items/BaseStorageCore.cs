@@ -1,12 +1,10 @@
 ﻿using Ionic.Zlib;
-using MagicStorage.Common;
 using MagicStorage.Common.IO;
 using MagicStorage.Components;
 using SerousCommonLib.API;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

@@ -1,4 +1,5 @@
 ﻿using MagicStorage.Components;
+using System;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
@@ -23,7 +24,7 @@ namespace MagicStorage.Items
 			Item.value = Item.sellPrice(gold: 10);
 		}
 
-		public override bool? UseItem(Player player)
+		public override Nullable<bool> UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
 		{
 			if (player.whoAmI == Main.myPlayer) {
 				if (Main.autoPause)

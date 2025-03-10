@@ -3,7 +3,6 @@ using MagicStorage.Common.Systems.RecurrentRecipes;
 using MagicStorage.Common.Systems.Shimmering;
 using MagicStorage.Components;
 using MagicStorage.CrossMod;
-using MagicStorage.UI;
 using MagicStorage.UI.States;
 using System;
 using System.Collections.Generic;

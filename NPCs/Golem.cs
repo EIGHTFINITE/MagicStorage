@@ -126,7 +126,7 @@ namespace MagicStorage.NPCs {
 
 		public override ITownNPCProfile TownNPCProfile() => new GolemProfile();
 
-		public override List<string> SetNPCNameList()
+		public override List<string> SetNPCNameList()/* tModPorter Suggestion: Return a list of names */
 			=> new() {
 				"413-BFS",  //Beforus
 				"612-ATR",  //Alternia

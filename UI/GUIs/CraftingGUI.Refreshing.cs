@@ -3,7 +3,6 @@ using MagicStorage.Components;
 using MagicStorage.CrossMod;
 using MagicStorage.Sorting;
 using MagicStorage.UI.States;
-using MagicStorage.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;

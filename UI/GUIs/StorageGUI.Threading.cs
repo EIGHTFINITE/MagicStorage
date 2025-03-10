@@ -6,7 +6,6 @@ using System;
 using MagicStorage.Common.Systems;
 using MagicStorage.CrossMod;
 using MagicStorage.UI.States;
-using MagicStorage.UI;
 using System.Collections.Generic;
 
 namespace MagicStorage {

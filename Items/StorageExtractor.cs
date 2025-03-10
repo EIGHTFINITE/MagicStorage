@@ -1,4 +1,5 @@
 ﻿using MagicStorage.Components;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -19,7 +20,7 @@ namespace MagicStorage.Items {
 			Item.value = Item.sellPrice(silver: 40);
 		}
 
-		public override bool? UseItem(Player player) {
+		public override Nullable<bool> UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */ {
 			if (player.whoAmI == Main.myPlayer && player.itemAnimation > 0 && player.itemTime == 0 && player.controlUseItem) {
 				int i = Player.tileTargetX;
 				int j = Player.tileTargetY;

@@ -7,7 +7,6 @@ using MagicStorage.UI.Shimmer;
 using SerousCommonLib.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Terraria;
 using Terraria.Audio;
