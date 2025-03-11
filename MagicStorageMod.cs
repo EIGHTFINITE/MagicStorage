@@ -109,47 +109,6 @@ namespace MagicStorage {
 			TryParseAs(0, out function);
 
 			switch (function) {
-				case "Prevent Shadow Diamond Drop":
-					if (args.Length != 2)
-						ThrowWithMessage("Expected 2 arguments");
-
-					TryParseAs(1, out int npcID);
-
-					if (npcID < 0)
-						ThrowWithMessage("NPC ID must be positive", 1);
-					else if (npcID < NPCID.Count)
-						ThrowWithMessage("NPC ID must refer to a modded NPC ID", 1);
-
-					StorageWorld.disallowDropModded.Add(npcID);
-					break;
-				case "Set Shadow Diamond Drop Rule":
-					if (args.Length != 3)
-						ThrowWithMessage("Expected 3 arguments");
-
-					TryParseAs(1, out npcID);
-					TryParseAs(2, out IItemDropRule rule);
-
-					if (npcID < 0)
-						ThrowWithMessage("NPC ID must be positive", 1);
-					else if (npcID < NPCID.Count)
-						ThrowWithMessage("NPC ID must refer to a modded NPC ID", 1);
-
-					StorageWorld.moddedDiamondDropRulesByType.Add(npcID, rule);
-					break;
-				case "Get Shadow Diamond Drop Rule":
-					if (args.Length < 2 || args.Length > 3)
-						ThrowWithMessage("Expected 2 or 3 arguments");
-
-					TryParseAs(1, out int dropNormal);
-					int dropExpert = -1;
-
-					if (args.Length == 3)
-						TryParseAs(2, out dropExpert);
-
-					if (dropNormal < 1)
-						ThrowWithMessage("Normal mode drop stack must be positive", 1);
-
-					return ShadowDiamondDrop.DropDiamond(dropNormal, dropExpert);
 				case "Get Campfire Condition":
 					if (args.Length != 1)
 						ThrowWithMessage("Expected 1 argument");
@@ -186,8 +145,6 @@ namespace MagicStorage {
 				default:
 					throw new ArgumentException("Call does not support the function \"" + function + "\"");
 			}
-
-			return null;
 		}
 	}
 }

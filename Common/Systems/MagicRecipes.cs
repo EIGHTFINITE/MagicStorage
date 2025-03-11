@@ -69,7 +69,7 @@ namespace MagicStorage.Common.Systems {
 			RecipeGroup.RegisterGroup("MagicStorage:AnySnowBiomeBlock", group);
 			RegisterGroupClone(group, nameof(ItemID.SnowBlock));
 
-			items = new[] { ItemID.Diamond, ModContent.ItemType<ShadowDiamond>() };
+			items = new int[] { ItemID.Diamond, ItemID.ShadowScale };
 			group = new RecipeGroup(() => $"{any} {Lang.GetItemNameValue(ItemID.Diamond)}", items);
 			RecipeGroup.RegisterGroup("MagicStorage:AnyDiamond", group);
 			RegisterGroupClone(group, nameof(ItemID.Diamond));
