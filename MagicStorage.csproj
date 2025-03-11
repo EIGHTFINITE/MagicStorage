@@ -6,7 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SerousCommonLib">
-      <HintPath>..\references\1.4.4\SerousCommonLib.dll</HintPath>
+      <HintPath>.\references\1.4.4\SerousCommonLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
